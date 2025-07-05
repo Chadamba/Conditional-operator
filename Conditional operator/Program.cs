@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class MainClass
 {
@@ -14,7 +15,8 @@ public class MainClass
                 "\n 2 - Возрастное ограничение" +
                 "\n 3 - Максимум из двух чисел" +
                 "\n 4 - Чётное число" +
-                "\n 5 - Делимость");
+                "\n 5 - Делимость" +
+                "\n 6 - Знак числа");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -38,7 +40,7 @@ public class MainClass
             }
             else if (userСhoice == 6)
             {
-                ;
+                NumberSign();
             }
             else if (userСhoice >= 7)
             {
@@ -165,6 +167,23 @@ public class MainClass
         else
         {
             Console.WriteLine("NO");
+        }
+    }
+    static void NumberSign()
+    {
+        Console.WriteLine("Введите значение");
+        int number = GetInt(nameof(number));
+        if (number > 0)
+        {
+            Console.WriteLine(1);
+        }
+        else if (number == 0)
+        {
+            Console.WriteLine(0);
+        }
+        else if (number < -1)
+        {
+            Console.WriteLine(-1);
         }
     }
 }
