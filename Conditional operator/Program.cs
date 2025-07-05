@@ -13,7 +13,8 @@ public class MainClass
                 "\n 1 - Пароль" +
                 "\n 2 - Возрастное ограничение" +
                 "\n 3 - Максимум из двух чисел" +
-                "\n 4 - ");
+                "\n 4 - Чётное число" +
+                "\n 5 - Делимость");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -29,9 +30,17 @@ public class MainClass
             }
             else if (userСhoice == 4)
             {
+                AnEvenNumber();
+            }
+            else if (userСhoice == 5)
+            {
+                Divisibility();
+            }
+            else if (userСhoice == 6)
+            {
                 ;
             }
-            else if (userСhoice >= 5)
+            else if (userСhoice >= 7)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -117,6 +126,45 @@ public class MainClass
         else
         {
             Console.WriteLine($"{secondNumber}");
+        }
+    }
+    /*Чётное число
+Напиши программу, которая определяет, является ли заданное целое число чётным.
+Если число четное, программа должна вывести сообщение: YES, иначе: NO
+Формат входных данных:
+Одно целое число, по модулю не превышающее 10^7.
+Формат выходных данных:
+Одна строка — результат проверки  в соответствии с условием задачи.*/
+    static void AnEvenNumber()
+    {
+        Console.WriteLine("Введите значение: ");
+        int number = GetInt(nameof(number));
+        if (number % 2 == 0)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
+    }
+
+    /*Делимость
+Напиши программу, которая проверяет, делится ли одно целое число a на другое целое число b нацело.
+Если a делится на b нацело, программа должна вывести сообщение: YES, иначе: NO*/
+    static void Divisibility()
+    {
+        Console.WriteLine("Введиет первое число: ");
+        int firstNumber = GetInt(nameof(firstNumber));
+        Console.WriteLine("Введиет второе число не равное нулю: ");
+        int secondNumber = GetInt(nameof(secondNumber));
+        if (firstNumber % secondNumber == 0)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
         }
     }
 }
