@@ -42,6 +42,10 @@ public class MainClass
             {
                 NumberSign();
             }
+            else if (userСhoice == 6)
+            {
+                PointAffiliation();
+            }
             else if (userСhoice >= 7)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -186,4 +190,29 @@ public class MainClass
             Console.WriteLine(-1);
         }
     }
+    /*Определи, принадлежит ли точка X одному из выделенных отрезков AB или CD(включая границы). Если принадлежит, программа должна вывести сообщение: YES, иначе: NO.
+Формат входных данных:
+Одно целое число x, по модулю не превышающее 10000.
+Формат выходных данных:
+Одна строка — результат проверки  в соответствии с условием задачи.*/
+    static void PointAffiliation()
+    {
+        int n = GetInt(nameof(n));
+        if (-3 <= n && n <= 1)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            if (5 <= n && n <= 9)
+            {
+                Console.WriteLine("YES");
+            }
+            else
+            {
+                Console.WriteLine("NO");
+            }
+        }
+    }
+
 }
