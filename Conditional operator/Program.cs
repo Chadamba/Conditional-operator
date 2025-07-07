@@ -16,7 +16,8 @@ public class MainClass
                 "\n 3 - Максимум из двух чисел" +
                 "\n 4 - Чётное число" +
                 "\n 5 - Делимость" +
-                "\n 6 - Знак числа");
+                "\n 6 - Знак числа" +
+                "\n 7 - Калькулятор");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -46,7 +47,12 @@ public class MainClass
             {
                 PointAffiliation();
             }
-            else if (userСhoice >= 7)
+            else if (userСhoice == 7)
+            {
+                calculate();
+            }
+
+            else if (userСhoice >= 8)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -213,6 +219,74 @@ public class MainClass
                 Console.WriteLine("NO");
             }
         }
+    }
+
+    static void calculate()
+    {
+        Console.Write("Введите первое число: ");
+        double x = GetDouble(nameof(x));
+        Console.Write("Введите второе число: ");
+        double y = GetDouble(nameof(y));
+        Console.Write("Введите оператор(+,-,*,/): ");
+        string operation = Convert.ToString(Console.ReadLine());
+
+
+
+        if (operation == "+")
+        {
+            Console.WriteLine(x + y);
+        }
+        else
+        {
+            if (operation == "-")
+            {
+                Console.WriteLine(x - y);
+            }
+            else
+            {
+                if (operation == "*")
+                {
+                    Console.WriteLine(x * y);
+                }
+                else
+                {
+                    if (operation == "/" && x != 0 && y != 0)
+                    {
+                        Console.WriteLine(x / y);
+                    }
+                    else
+                    {
+                        if (x == 0 || y == 0 && operation == "/")
+                        {
+                            Console.WriteLine("На ноль делить нельзя!");
+                        }
+                        else
+                        {
+                            if (operation != "+" || operation != "-" || operation != "/" || operation != "*" )
+                            {
+                                Console.WriteLine("Неверная операция");
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+    static double GetDouble(string name)
+    {
+        bool check;
+        double number;
+        do
+        {
+            check = double.TryParse(Console.ReadLine(), out number);
+            if (!check) Console.WriteLine("Вы ввели неправильное значение." +
+                "\n Введите правильное значение =" + name + ".");
+        }
+        while (!check);
+        return number;
+
     }
 
 }
