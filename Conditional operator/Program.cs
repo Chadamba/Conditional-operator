@@ -17,7 +17,8 @@ public class MainClass
                 "\n 4 - Чётное число" +
                 "\n 5 - Делимость" +
                 "\n 6 - Знак числа" +
-                "\n 7 - Калькулятор");
+                "\n 7 - Калькулятор" +
+                "\n 8 - Симетричное число");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -51,8 +52,12 @@ public class MainClass
             {
                 calculate();
             }
-
-            else if (userСhoice >= 8)
+            
+else if (userСhoice == 8)
+            {
+                ASymmetricNumber();
+            }
+            else if (userСhoice >= 9)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -287,6 +292,25 @@ public class MainClass
         while (!check);
         return number;
 
+    }
+
+    static void ASymmetricNumber()
+    {
+        Console.WriteLine("Введите число в диапазоне от 1000 до 9999 включительно.");
+        int fourDigitNumber = GetInt(nameof(fourDigitNumber));
+        int firstNumber = fourDigitNumber % 10;
+        int secondNumber = (fourDigitNumber / 10) % 10;
+        int thirdNumber = (fourDigitNumber / 100) % 10;
+        int fourthNumber = fourDigitNumber / 1000;
+
+        if (firstNumber == fourthNumber && secondNumber == thirdNumber)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
     }
 
 }
