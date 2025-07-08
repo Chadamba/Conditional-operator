@@ -18,7 +18,9 @@ public class MainClass
                 "\n 5 - Делимость" +
                 "\n 6 - Знак числа" +
                 "\n 7 - Калькулятор" +
-                "\n 8 - Симетричное число");
+                "\n 8 - Симетричное число" +
+                "\n 9 - Возрастающее число" +
+                "");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -52,12 +54,17 @@ public class MainClass
             {
                 calculate();
             }
-            
-else if (userСhoice == 8)
+
+            else if (userСhoice == 8)
             {
                 ASymmetricNumber();
             }
-            else if (userСhoice >= 9)
+            else if (userСhoice == 9)
+            {
+                IncreasingSequence();
+            }
+            
+            else if (userСhoice >= 10)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -267,7 +274,7 @@ else if (userСhoice == 8)
                         }
                         else
                         {
-                            if (operation != "+" || operation != "-" || operation != "/" || operation != "*" )
+                            if (operation != "+" || operation != "-" || operation != "/" || operation != "*")
                             {
                                 Console.WriteLine("Неверная операция");
                             }
@@ -312,5 +319,23 @@ else if (userСhoice == 8)
             Console.WriteLine("NO");
         }
     }
+
+    static void IncreasingSequence()
+    {
+        Console.WriteLine("Введите число в диапазоне от 100 до 999 включительно.");
+        int fourDigitNumber = GetInt(nameof(fourDigitNumber));
+        int firstNumber = fourDigitNumber % 10;
+        int secondNumber = (fourDigitNumber / 10) % 10;
+        int thirdNumber = (fourDigitNumber / 100) % 10;
+        if (firstNumber > secondNumber && secondNumber > thirdNumber)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
+    }
+
 
 }
