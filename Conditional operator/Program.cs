@@ -20,7 +20,7 @@ public class MainClass
                 "\n 7 - Калькулятор" +
                 "\n 8 - Симетричное число" +
                 "\n 9 - Возрастающее число" +
-                "");
+                "\n 10 - ");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -63,8 +63,14 @@ public class MainClass
             {
                 IncreasingSequence();
             }
-            
-            else if (userСhoice >= 10)
+            else if (userСhoice == 10)
+            {
+                WePlayFootball();
+            }
+
+
+
+            else if (userСhoice >= 11)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -335,6 +341,29 @@ public class MainClass
         {
             Console.WriteLine("NO");
         }
+    }
+    /*Футбольная команда набирает мальчиков от 12 до 18 лет включительно.Напиши программу, 
+     * которая запрашивает возраст и пол претендента, используя обозначение пола буквы m (от male – мужчина) и f(от female – женщина) и определяет,
+     * подходит ли претендент для вступления в команду или нет.
+Если претендент подходит, программа должна вывести YES, в противном случае — NO*/
+
+    static void WePlayFootball()
+    {
+        Console.WriteLine("Введите возраст ");
+        int age = GetInt(nameof(age));
+        Console.WriteLine("Введите пол m (от male – мужчина) и f(от female – женщина)");
+        string gender = Console.ReadLine();
+        if (age >= 12 && age <= 18 && gender == "m")
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
+
+
+
     }
 
 
