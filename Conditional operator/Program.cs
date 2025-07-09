@@ -20,7 +20,8 @@ public class MainClass
                 "\n 7 - Калькулятор" +
                 "\n 8 - Симетричное число" +
                 "\n 9 - Возрастающее число" +
-                "\n 10 - ");
+                "\n 10 - " +
+                "\n 11 - ");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -68,9 +69,12 @@ public class MainClass
                 WePlayFootball();
             }
 
+            else if (userСhoice == 11)
+            {
+                YESorNO();
+            }
 
-
-            else if (userСhoice >= 11)
+            else if (userСhoice >= 12)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -361,10 +365,27 @@ public class MainClass
         {
             Console.WriteLine("NO");
         }
-
-
-
     }
 
+    /*YES or NO — вот в чём вопрос
+ Напиши программу, которая принимает на вход число и в зависимости от условий выводит текст YES или NO.
+ Условия:
+ если число нечётное, то вывести YES;
+ если число чётное в диапазоне от 2 до 5 (включительно), то вывести NO;
+ если число чётное в диапазоне от 6 до 20 (включительно), то вывести YES;
+ если число чётное и больше 20, то вывести NO.*/
 
+    static void YESorNO()
+    {
+        Console.Write("Введите число: ");
+        int x = GetInt(nameof(x));
+        if (x % 2 != 0 || x % 2 == 0 && x >= 6 && x <= 20)
+        {
+            Console.WriteLine("YES");
+        }
+        else
+        {
+            Console.WriteLine("NO");
+        }
+    }
 }
