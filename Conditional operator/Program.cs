@@ -77,8 +77,11 @@ public class MainClass
             {
                 Sum();
             }
-           
-            else if (userСhoice >= 13)
+            else if (userСhoice == 13)
+            {
+                Sum2();
+            }
+            else if (userСhoice >= 14)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -406,7 +409,21 @@ public class MainClass
         }
 
         Console.WriteLine(sum);
-
     }
+    static void Sum2()
+    {
+           int n = Convert.ToInt32(Console.ReadLine());
+    int sum = 0;
+	       for (int i = 0; i<n; i++)
+	         {
+                int number = Convert.ToInt32(Console.ReadLine());
+                if(number % 2 == 0 && number % 3 != 0)
+                {  
+		            sum = sum + number;
+                }
+		        
+	         }
+	       Console.WriteLine(sum);
+        }
 
 }
