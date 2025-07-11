@@ -20,8 +20,9 @@ public class MainClass
                 "\n 7 - Калькулятор" +
                 "\n 8 - Симетричное число" +
                 "\n 9 - Возрастающее число" +
-                "\n 10 - " +
-                "\n 11 - ");
+                "\n 10 - Да или нет" +
+                "\n 11 - Сумма" +
+                "\n 12 - Сумма 2");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
