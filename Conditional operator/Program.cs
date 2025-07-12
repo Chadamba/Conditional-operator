@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class MainClass
@@ -23,7 +24,8 @@ public class MainClass
                 "\n 10 - Мы играем в футбол" +
                 "\n 11 - Да или нет" +
                 "\n 12 - Сумма" +
-                "\n 13 - Сумма 2");
+                "\n 13 - Сумма 2" +
+                "\n 14 - Обратное число");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -83,7 +85,11 @@ public class MainClass
             {
                 Sum2();
             }
-            else if (userСhoice >= 14)
+            else if (userСhoice == 14)
+            {
+                ReverseNumber();
+            }
+            else if (userСhoice >= 15)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -414,18 +420,34 @@ public class MainClass
     }
     static void Sum2()
     {
-           int n = Convert.ToInt32(Console.ReadLine());
-    int sum = 0;
-	       for (int i = 0; i<n; i++)
-	         {
-                int number = Convert.ToInt32(Console.ReadLine());
-                if(number % 2 == 0 && number % 3 != 0)
-                {  
-		            sum = sum + number;
-                }
-		        
-	         }
-	       Console.WriteLine(sum);
+        int n = Convert.ToInt32(Console.ReadLine());
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            int number = Convert.ToInt32(Console.ReadLine());
+            if (number % 2 == 0 && number % 3 != 0)
+            {
+                sum = sum + number;
+            }
+
         }
+        Console.WriteLine(sum);
+    }
+    static void ReverseNumber()
+    {
+        Console.WriteLine("Введите число: ");
+        string number = Console.ReadLine();
+        double numberConversFromString = Convert.ToDouble(number);
+        if (numberConversFromString == 0)
+        {
+            Console.WriteLine("Обратного числа не существует");
+        }
+        else
+        {
+            double reverseNumber = numberConversFromString / 1;
+            Console.WriteLine($"{reverseNumber}");
+        }
+    }
+
 
 }
