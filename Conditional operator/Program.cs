@@ -25,7 +25,8 @@ public class MainClass
                 "\n 11 - Да или нет" +
                 "\n 12 - Сумма" +
                 "\n 13 - Сумма 2" +
-                "\n 14 - Обратное число");
+                "\n 14 - Обратное число" +
+                "\n 15 - Артур и поход в магазин");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -89,6 +90,11 @@ public class MainClass
             {
                 ReverseNumber();
             }
+            else if (userСhoice == 15)
+            {
+                TripToStore();
+            }
+            
             else if (userСhoice >= 15)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -444,9 +450,25 @@ public class MainClass
         }
         else
         {
-            double reverseNumber = numberConversFromString / 1;
+            double reverseNumber = 1 / numberConversFromString;
             Console.WriteLine($"{reverseNumber}");
         }
+    }
+     static void TripToStore()
+    {
+        int d1 = Convert.ToInt32(Console.ReadLine());
+        int d2 = Convert.ToInt32(Console.ReadLine());
+        int d3 = Convert.ToInt32(Console.ReadLine());
+
+        int sum1 = d1 + d3 + d2;
+        int sum2 = d1 + d1 + d2 + d2;
+        int sum3 = d1 + d3 + d3 + d1;
+        int sum4 = d2 + d3 + d3 + d2;
+
+        int result = Math.Min(sum1, sum2);
+        result = Math.Min(result, sum3);
+        result = Math.Min(result, sum4);
+        Console.WriteLine(result);
     }
 
 
