@@ -486,13 +486,13 @@ public class MainClass
     static void OnAnElectricScooterWithABreeze()
     {
         Console.Write("Стоимость тарифа на день (в рублях) = ");
-        int costOfTariffPerDay = Convert.ToInt32(Console.ReadLine());
+        int costOfTariffPerDay = GetInt(nameof(costOfTariffPerDay));
         Console.Write("Количество бесплатных минут = ");
-        int freeMinutes = Convert.ToInt32(Console.ReadLine());
+        int freeMinutes = GetInt(nameof(freeMinutes));
         Console.Write("Фактическая длительность поездки (в минутах) = ");
-        int actualDurationInMinutes = Convert.ToInt32(Console.ReadLine());
+        int actualDurationInMinutes = GetInt(nameof(costOfTariffPerDay));
         Console.Write("Стоимость одной дополнительной минуты после превышения лимита = ");
-        int costOfOneAdditionalMinute = Convert.ToInt32(Console.ReadLine());
+        int costOfOneAdditionalMinute = GetInt(nameof(costOfTariffPerDay));
 
         int exceedLimit = actualDurationInMinutes - freeMinutes; //Находим, сколько минут Андрей израсходовал сверх тарифа
         if (exceedLimit > 0)
