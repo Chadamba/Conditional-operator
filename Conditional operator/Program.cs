@@ -32,7 +32,7 @@ public class MainClass
                 "\n 15 - Артур и поход в магазин" +
                 "\n 16 - На электросамокате с ветерком" +
                 "\n 17 - Стоимость перелёта" +
-                "\n 18 - ");
+                "\n 18 - Система наблюдения");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -108,8 +108,12 @@ public class MainClass
             {
                 FlightCost();
             }
+            else if (userСhoice == 18)
+            {
+                SurveillanceSystem();
+            }
 
-            else if (userСhoice >= 18)
+            else if (userСhoice >= 19)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -533,7 +537,7 @@ public class MainClass
         string input = Console.ReadLine();
         if (!string.IsNullOrEmpty(input))
         {
-            
+
             int.TryParse(input, out costOfOnBoardMeals);
         }
 
@@ -550,9 +554,28 @@ public class MainClass
         {
             weightOfHandLuggage = 0;
         }
-         int totalTicketPrice = fullTicketPrice + weightOfHandLuggage;
+        int totalTicketPrice = fullTicketPrice + weightOfHandLuggage;
         Console.WriteLine($"Полёт обойдётся в {totalTicketPrice} рублей ");
+    }
 
+    static void SurveillanceSystem()
+    {
+        int num = Convert.ToInt32(Console.ReadLine());
 
+        int d = num % 10;
+        int h = num % 100;
+
+        if (d == 1 && h != 11)
+        {
+            Console.WriteLine(num + " Гимназист");
+        }
+        else if ((2 <= d && d <= 4) && !(12 <= h && h <= 14))
+        {
+            Console.WriteLine(num + " Гимназиста");
+        }
+        else
+        {
+            Console.WriteLine(num + " Гимназистов");
+        }
     }
 }
