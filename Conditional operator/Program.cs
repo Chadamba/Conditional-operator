@@ -101,7 +101,7 @@ public class MainClass
             {
                 OnAnElectricScooterWithABreeze();
             }
-            
+
             else if (userСhoice >= 17)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -461,7 +461,7 @@ public class MainClass
             Console.WriteLine($"{reverseNumber}");
         }
     }
-     static void TripToStore()
+    static void TripToStore()
     {
         Console.WriteLine("Поход в магазин. " +
             "\nВ данном простом примере вам надо вести 3 разных числа, и рассчитается минимальный путь" +
@@ -495,11 +495,19 @@ public class MainClass
         int costOfOneAdditionalMinute = Convert.ToInt32(Console.ReadLine());
 
         int exceedLimit = actualDurationInMinutes - freeMinutes; //Находим, сколько минут Андрей израсходовал сверх тарифа
-        int fullCostOfAdditionalMinutes = exceedLimit * costOfOneAdditionalMinute; // Умножим полученную разницу на цену дополнительных минут
-        int fullCostOfTariff = costOfTariffPerDay + fullCostOfAdditionalMinutes; // Сложим стоимость дополнительных минут со стоимостью тарифа
-
-        Console.WriteLine($"К опалте тарифа аренды самоката = {fullCostOfTariff}");
-        Console.ReadKey();
+        if (exceedLimit > 0)
+        {
+            int fullCostOfAdditionalMinutes = exceedLimit * costOfOneAdditionalMinute; // Умножим полученную разницу на цену дополнительных минут
+            int fullCostOfTariff = costOfTariffPerDay + fullCostOfAdditionalMinutes; // Сложим стоимость дополнительных минут со стоимостью тарифа
+            Console.WriteLine($"К опалте тарифа аренды самоката = {fullCostOfTariff}");
+        }
+        else 
+        {
+            Console.WriteLine($"К опалте тарифа аренды самоката = {costOfTariffPerDay}");
+        }
+            
+       
     }
+
 
 }
