@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Runtime.ConstrainedExecution;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class MainClass
@@ -26,7 +27,9 @@ public class MainClass
                 "\n 12 - Сумма" +
                 "\n 13 - Сумма 2" +
                 "\n 14 - Обратное число" +
-                "\n 15 - Артур и поход в магазин");
+                "\n 15 - Артур и поход в магазин" +
+                "\n 16 - На электросамокате с ветерком" +
+                "\n 17 - ");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -94,8 +97,12 @@ public class MainClass
             {
                 TripToStore();
             }
+            else if (userСhoice == 16)
+            {
+                OnAnElectricScooterWithABreeze();
+            }
             
-            else if (userСhoice >= 15)
+            else if (userСhoice >= 17)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -476,5 +483,23 @@ public class MainClass
         Console.WriteLine($"Самый короткий путь {result}");
     }
 
+    static void OnAnElectricScooterWithABreeze()
+    {
+        Console.Write("Стоимость тарифа на день (в рублях) = ");
+        int costOfTariffPerDay = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Количество бесплатных минут = ");
+        int freeMinutes = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Фактическая длительность поездки (в минутах) = ");
+        int actualDurationInMinutes = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Стоимость одной дополнительной минуты после превышения лимита = ");
+        int costOfOneAdditionalMinute = Convert.ToInt32(Console.ReadLine());
+
+        int exceedLimit = actualDurationInMinutes - freeMinutes; //Находим, сколько минут Андрей израсходовал сверх тарифа
+        int fullCostOfAdditionalMinutes = exceedLimit * costOfOneAdditionalMinute; // Умножим полученную разницу на цену дополнительных минут
+        int fullCostOfTariff = costOfTariffPerDay + fullCostOfAdditionalMinutes; // Сложим стоимость дополнительных минут со стоимостью тарифа
+
+        Console.WriteLine($"К опалте тарифа аренды самоката = {fullCostOfTariff}");
+        Console.ReadKey();
+    }
 
 }
