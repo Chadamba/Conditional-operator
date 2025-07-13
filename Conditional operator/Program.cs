@@ -456,8 +456,13 @@ public class MainClass
     }
      static void TripToStore()
     {
+        Console.WriteLine("Поход в магазин. " +
+            "\nВ данном простом примере вам надо вести 3 разных числа, и рассчитается минимальный путь" +
+            "\nВведите расстояние от дома к первому магазину");
         int d1 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Введите растояние от дома к второму магазину");
         int d2 = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Введите растояние от первого магазина к второму магазину");
         int d3 = Convert.ToInt32(Console.ReadLine());
 
         int sum1 = d1 + d3 + d2;
@@ -468,7 +473,7 @@ public class MainClass
         int result = Math.Min(sum1, sum2);
         result = Math.Min(result, sum3);
         result = Math.Min(result, sum4);
-        Console.WriteLine(result);
+        Console.WriteLine($"Самый короткий путь {result}");
     }
 
 
