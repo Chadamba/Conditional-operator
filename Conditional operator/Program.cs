@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Diagnostics;
+using System.Net.Sockets;
 using System.Runtime.ConstrainedExecution;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -29,7 +31,8 @@ public class MainClass
                 "\n 14 - Обратное число" +
                 "\n 15 - Артур и поход в магазин" +
                 "\n 16 - На электросамокате с ветерком" +
-                "\n 17 - ");
+                "\n 17 - Стоимость перелёта" +
+                "\n 18 - ");
             int userСhoice = GetInt(nameof(userСhoice));
             if (userСhoice == 1)
             {
@@ -101,8 +104,12 @@ public class MainClass
             {
                 OnAnElectricScooterWithABreeze();
             }
+            else if (userСhoice == 17)
+            {
+                FlightCost();
+            }
 
-            else if (userСhoice >= 17)
+            else if (userСhoice >= 18)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Несуществующий пункт");
@@ -501,13 +508,51 @@ public class MainClass
             int fullCostOfTariff = costOfTariffPerDay + fullCostOfAdditionalMinutes; // Сложим стоимость дополнительных минут со стоимостью тарифа
             Console.WriteLine($"К опалте тарифа аренды самоката = {fullCostOfTariff}");
         }
-        else 
+        else
         {
             Console.WriteLine($"К опалте тарифа аренды самоката = {costOfTariffPerDay}");
         }
-            
-       
     }
 
+    static void FlightCost()
+    {
+        Console.Write("Цена билета = ");
+        int ticketPrice = GetInt(nameof(ticketPrice));
 
+        Console.Write("Стоимость места у окна  = ");
+        int costOfWindowSeat = 0;
+        string entry = Console.ReadLine();
+        if (!string.IsNullOrEmpty(entry))
+        {
+
+            int.TryParse(entry, out costOfWindowSeat);
+        }
+
+        Console.Write("Стоимость бортового питания  = ");
+        int costOfOnBoardMeals = 0;
+        string input = Console.ReadLine();
+        if (!string.IsNullOrEmpty(input))
+        {
+            
+            int.TryParse(input, out costOfOnBoardMeals);
+        }
+
+        Console.Write("Масса ручной клади Михаила в килограммах = ");
+        int weightOfHandLuggage = GetInt(nameof(weightOfHandLuggage));
+
+        int fullTicketPrice = ticketPrice + costOfWindowSeat + costOfOnBoardMeals;
+
+        if (weightOfHandLuggage > 3)
+        {
+            weightOfHandLuggage = 200 * (weightOfHandLuggage - 3);
+        }
+        else if (weightOfHandLuggage <= 3)
+        {
+            weightOfHandLuggage = 0;
+        }
+         int totalTicketPrice = fullTicketPrice + weightOfHandLuggage;
+        Console.WriteLine($"Полёт обойдётся в {totalTicketPrice} рублей ");
+
+
+    }
 }
